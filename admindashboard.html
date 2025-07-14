@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* All CSS for admindashboard.html is now directly embedded here */
+
+        /* Universal box-sizing for consistent layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dce0d9; /* Light green/grey background */
+            color: #595959; /* Dark grey text */
+            line-height: 1.6;
+            display: flex; /* Use flexbox for overall page layout */
+            flex-direction: column; /* Stack content vertically */
+            min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+        }
+
+        /* Header Bar (consistent theme) */
+        .header-bar {
+            background-color: #aa7dce; /* Purple/lavender */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between; /* Space out welcome title and right-side group */
+            align-items: center; /* Vertically align items */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            min-height: 60px;
+            flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+        }
+
+        .left-content { /* Placeholder for potential left-side content like a logo */
+            flex-basis: 150px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .center-title {
+            flex-grow: 1; /* Allows the title to take available space */
+            text-align: center; /* Keeps the text content of the title centered */
+            min-width: 0; /* Allow flex item to shrink below its content's intrinsic size */
+            overflow: hidden; /* Hide overflow content */
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+            white-space: nowrap; /* Prevent text from wrapping */
+            padding: 0 10px; /* Add slight horizontal padding inside the title area */
+        }
+
+        .welcome { /* Reusing .welcome class for the main title on this page */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin: 0;
+            color: white;
+        }
+
+        .header-right-group {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Space between profile icon and logout button */
+            flex-basis: 150px; /* Give it some base space */
+            flex-grow: 0;
+            flex-shrink: 0;
+            justify-content: flex-end; /* Align content to the right */
+        }
+
+        .profile-icon-link {
+            display: block; /* Ensures width/height apply correctly */
+            width: 40px; /* Fixed width for the icon */
+            height: 40px; /* Fixed height for the icon */
+            border-radius: 50%; /* Makes it circular */
+            overflow: hidden; /* Clips content outside the circle */
+            border: 2px solid white; /* White border around the icon */
+            flex-shrink: 0; /* Prevents the icon from shrinking */
+        }
+
+        .profile-icon {
+            width: 100%; /* Make image fill its container */
+            height: 100%; /* Make image fill its container */
+            object-fit: cover; /* Ensures image covers the area without distortion */
+            display: block; /* Removes extra space below image */
+        }
+
+        /* Dashboard Grid */
+        .dashboard-container { /* Renamed from .dashboard for this file's specificity */
+            display: grid;
+            /* Responsive grid: columns will wrap, minimum size 280px, maximum 1fr (equal fraction) */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* Space between grid items */
+            padding: 40px;
+            max-width: 1400px; /* BROADER: Increased for wider dashboard grid */
+            margin: 40px auto; /* Center the grid */
+            flex-grow: 1; /* Allows dashboard to take available vertical space */
+        }
+
+        .card {
+            background-color: #fcfcfc; /* White background for cards */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribute space between title and link */
+            align-items: center; /* Center content horizontally */
+            min-height: 180px; /* Ensures consistent card height */
+            text-decoration: none; /* Remove underline for links */
+            color: inherit; /* Inherit text color from body */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift card slightly on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+        }
+
+        .card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #aa7dce; /* Consistent purple color */
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 0; /* Remove default paragraph margin */
+            color: #595959; /* Ensure text color is consistent */
+        }
+
+        /* Buttons (consistent with other pages) */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .danger-button { /* Custom style for logout button */
+            background-color: #c0392b; /* Red */
+            color: white;
+        }
+
+        .danger-button:hover {
+            background-color: #e74c3c; /* Lighter red on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer (consistent theme) */
+        .footer {
+            background-color: #a6c36f;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            margin-top: auto; /* Push footer to the bottom */
+            flex-shrink: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1450px) { /* Adjust breakpoint to affect wider screens first */
+            .dashboard-container {
+                max-width: 95%; /* Allow dashboard to shrink as needed */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-bar {
+                flex-direction: column; /* Stack items vertically in header */
+                gap: 10px;
+                padding: 10px 15px;
+                min-height: auto;
+            }
+            .left-content, .center-title, .header-right-group {
+                flex-basis: auto; /* Reset flex basis */
+                width: 100%; /* Take full width */
+                text-align: center; /* Center content */
+                justify-content: center; /* Center items within flex container */
+            }
+            .header-right-group {
+                flex-direction: row; /* Keep profile icon and logout side-by-side */
+                gap: 15px;
+                margin-top: 5px;
+            }
+            .welcome {
+                font-size: 1.5rem;
+            }
+            .dashboard-container {
+                grid-template-columns: 1fr; /* Single column layout */
+                padding: 20px;
+                margin: 20px auto;
+                gap: 20px;
+            }
+            .card {
+                padding: 20px;
+                min-height: 150px;
+            }
+            .button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome {
+                font-size: 1.2rem;
+            }
+            .card h3 {
+                font-size: 1.3rem;
+            }
+            .card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="left-content">
+            </div>
+        <div class="center-title">
+            <h1 class="welcome">Admin Dashboard</h1>
+        </div>
+        <div class="header-right-group">
+            <form action="logout" method="post">
+                <button type="submit" class="button danger-button">Logout</button>
+                <a href="adminprofile.html" class="profile-icon" title="View Profile"></a>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <a href="viewpatients" class="card">
+            <h3>Patient Records</h3>
+            <img src="upload/record.jpg" alt="User Management Icon">
+            <p>View and manage all patients</p>
+        </a>
+
+        <a href="today" class="card">
+            <h3>Appointments</h3>
+            <img src="upload/apt.jpg" alt="User Management Icon">
+            <p>Track and update appointments</p>
+        </a>
+        </div>
+
+    <div class="footer">
+        &copy; 2025 Your HealthCare System. All rights reserved.
+    </div>
+
+</body>
+</html>

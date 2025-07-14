@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Prescription</title>
+</head>
+<body>
+    <h2>Add Prescription</h2>
+
+    <!-- Message display -->
+    <p id="msg" style="color: green;"></p>
+
+    <form method="post" action="prescription">
+        <label>Appointment ID:</label>
+        <input type="text" name="appointment_id" id="appointment_id" readonly><br><br>
+
+        <label>Prescription Date:</label>
+        <input type="date" name="prescription_date" required><br><br>
+
+        <label>Medication:</label>
+        <input type="text" name="medication" required><br><br>
+
+        <label>Notes:</label>
+        <textarea name="notes" required></textarea><br><br>
+
+        <input type="submit" value="Add Prescription">
+    </form>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        // Populate appointment ID from URL
+        const appointmentId = params.get("appointment_id");
+        if (appointmentId) {
+            document.getElementById("appointment_id").value = appointmentId;
+        }
+
+        // Display success or failure message
+        const message = params.get("message");
+        const msgElement = document.getElementById("msg");
+
+        if (message === "success") {
+            msgElement.textContent = "Prescription added successfully!";
+        } else if (message === "fail") {
+            msgElement.textContent = "Failed to add prescription.";
+            msgElement.style.color = "red";
+        }
+    </script>
+</body>
+</html>

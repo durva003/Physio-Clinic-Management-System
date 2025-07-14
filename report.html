@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload Patient Report</title>
+        <link rel="stylesheet" href="report.css"> <script>
+            window.onload = function() {
+                const params = new URLSearchParams(window.location.search);
+                if (params.get("success") === "true") {
+                    document.getElementById("successMsg").style.display = "block";
+                    // Optional: hide after a few seconds
+                    setTimeout(() => {
+                        document.getElementById("successMsg").style.display = "none";
+                        // Optional: clear URL parameter to prevent re-showing on refresh
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    }, 4000);
+                }
+
+                // Set min date for report_date input to today
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0!
+                const dd = String(today.getDate()).padStart(2, '0');
+                const minDate = yyyy + '-' + mm + '-' + dd;
+                document.getElementById('reportDate').setAttribute('max', minDate); // Max date should be today
+            };
+        </script>
+    </head>
+    <body>
+
+        <div class="header-bar">
+          <div class="center-title">
+            <h1 class="welcome">Upload Patient Report</h1>
+          </div>
+        </div>
+
+        <div class="container"> <div class="message success-message" id="successMsg">
+                Report uploaded successfully!
+            </div>
+
+            <h2>Upload Your Medical Report (PDF)</h2>
+
+            <form action="UploadReport" method="post" enctype="multipart/form-data" class="upload-form">
+                <div class="form-group">
+                    <label for="reportDate">Date of Report:</label>
+                    <input type="date" id="reportDate" name="report_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="3" required placeholder="e.g., Blood test results, X-ray scan..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="reportFile">Select Report (PDF only):</label>
+                    <input type="file" id="reportFile" name="report" accept="application/pdf" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button primary-button">Upload Report</button>
+                    <button type="button" onclick="window.location.href='PatientDashboard'" class="button secondary-button">Back to Dashboard</button>
+                </div>
+            </form>
+
+            <div class="divider"></div> <h2 class="view-reports-heading">View Your Uploaded Reports</h2>
+            <form action="GetUserReports" method="get" class="view-form">
+                <button type="submit" class="button primary-button">View My Reports</button>
+            </form>
+        </div> <div class="footer">
+            &copy; 2025 Your HealthCare System. All rights reserved.
+        </div>
+
+    </body>
+</html>

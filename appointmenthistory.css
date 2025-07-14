@@ -1,0 +1,212 @@
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Import Google Fonts - Consistent with other pages */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar (consistent theme) */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center; /* Vertically align items */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+/* Style for the back button in the header */
+.header-back-button {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.header-back-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.center-title {
+    flex-grow: 1; /* Allows the title to take available space */
+    text-align: center; /* Keeps the text content of the title centered */
+    margin-left: auto;  /* Pushes this element to the right as far as possible */
+    margin-right: auto; /* Pushes this element to the left as far as possible */
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    padding: 40px;
+    width: 90%;   /* Forces container to take 90% of screen width */
+    max-width: 1600px; /* Ensures it doesn't get excessively wide on huge monitors */
+    margin: 40px auto; /* This centers the container horizontally */
+    flex-grow: 1;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #81c3d7; /* Light blue from your h2 color */
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Table Container for overflow */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background-color: #fcfcfc; /* This is the white background */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px; /* Padding inside the white box */
+    width: 100%; /* Explicitly ensures it fills its parent */
+}
+
+/* Table Styling */
+.reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    border: none;
+}
+
+.reports-table th,
+.reports-table td {
+    padding: 18px 25px; /* Increased padding for bigger cells */
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light separator lines for rows */
+    font-size: 1.05rem; /* Slightly larger font for table data */
+}
+
+.reports-table th {
+    background-color: #aa7dce; /* Purple for table headers */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem; /* Larger font for headers */
+}
+
+.reports-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for readability */
+}
+
+.reports-table tbody tr:hover {
+    background-color: #f0f0f0; /* Slight hover effect */
+}
+
+/* Message Styles */
+.info-message,
+.error-message,
+.no-records-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.info-message {
+    background-color: #e6f7ff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+}
+
+.error-message {
+    background-color: #ffe0e0;
+    color: #c00000;
+    border: 1px solid #c00000;
+}
+
+.no-records-message {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Footer (consistent theme) */
+.footer {
+    background-color: #a6c36f;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+        width: 95%; /* Adjusted for small screens to prevent horizontal scroll */
+        max-width: none; /* Remove max-width limit on small screens */
+    }
+
+    .header-bar {
+        padding: 10px 15px;
+    }
+
+    .welcome {
+        font-size: 1.5rem;
+    }
+
+    .reports-table th,
+    .reports-table td {
+        padding: 12px 15px; /* Adjusted padding for smaller screens */
+        font-size: 0.95rem; /* Adjusted font size for smaller screens */
+    }
+    .reports-table th {
+        font-size: 1rem; /* Keep header font slightly larger on small screens */
+    }
+
+    .header-back-button {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    .info-message,
+    .error-message,
+    .no-records-message {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+}

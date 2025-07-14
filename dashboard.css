@@ -1,0 +1,234 @@
+/* dashboard.css */
+
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Import Google Fonts - Consistent with other pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex; /* Use flexbox for overall page layout */
+    flex-direction: column; /* Stack content vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px; /* Add some horizontal padding to the bar itself */
+    display: flex; /* Make header a flex container */
+    justify-content: space-between; /* Pushes left, center, right content apart */
+    align-items: center; /* Vertically align items */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevent header from shrinking too much */
+    min-height: 60px; /* Ensure a minimum height for the header */
+}
+
+.left-content {
+    /* Ensure this empty div does not take up horizontal space */
+    width: 0;
+    flex-shrink: 0;
+}
+
+.center-title {
+    flex-grow: 1; /* Allows the title to take available space */
+    text-align: center; /* Keeps the text content of the title centered */
+    min-width: 0; /* CRITICAL: Allow flex item to shrink below its content's intrinsic size */
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    padding: 0 10px; /* Add slight horizontal padding inside the title area */
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Group for profile and logout */
+.header-right-group {
+    display: flex; /* Make this a flex container */
+    align-items: center; /* Align items vertically */
+    gap: 15px; /* Space between profile icon and logout link */
+    flex-shrink: 0; /* Prevent this entire group from shrinking */
+    margin-left: 20px; /* Add some space between center-title and this group */
+}
+
+.profile-icon-link {
+    /* Ensure the link itself behaves as a flex item */
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent the profile link from shrinking */
+}
+
+.profile-icon-link img {
+    width: 35px;   /* Default icon size */
+    height: 35px;  /* Keep same as width for circular icon */
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    display: block; /* Important for proper box model */
+    flex-shrink: 0; /* CRITICAL: PREVENTS THE IMAGE FROM SHRINKING OR EXPANDING BEYOND ITS SET SIZE */
+    transition: transform 0.2s ease;
+}
+
+.profile-icon-link img:hover {
+    transform: scale(1.1);
+}
+
+.logout-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem; /* Default font size for logout text */
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Ensure the link doesn't shrink */
+    white-space: nowrap; /* Prevent "Logout" text from wrapping */
+}
+
+.logout-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
+}
+
+
+/* Dashboard Grid */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    padding: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    flex-grow: 1; /* Allow dashboard content to take available vertical space */
+}
+
+.dashboard .card {
+    background-color: #fcfcfc; /* White background for cards */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px; /* Ensure cards have a minimum height */
+}
+
+.dashboard .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard .card h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #aa7dce; /* Consistent purple color for card titles */
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.dashboard .card a {
+    display: inline-block;
+    background-color: #81c3d7; /* Light blue for "Go" buttons */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto; /* Push button to the bottom of the card */
+}
+
+.dashboard .card a:hover {
+    background-color: #6daac2;
+    transform: translateY(-2px);
+}
+
+
+/* Footer (consistent theme) */
+.footer {
+    background-color: #a6c36f;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto; /* Push footer to the bottom */
+    flex-shrink: 0;
+}
+
+/* Responsive Adjustments for Header specifically */
+@media (max-width: 768px) {
+    .header-bar {
+        padding: 10px 10px; /* Reduce overall header padding */
+    }
+
+    .welcome {
+        font-size: 1.4rem; /* Further reduce font size on smaller screens */
+    }
+
+    .header-right-group {
+        gap: 8px; /* Reduce gap */
+        margin-left: 10px; /* Adjust margin */
+    }
+
+    .logout-link {
+        font-size: 0.8rem; /* Even smaller font for logout */
+        padding: 5px 8px; /* Even smaller padding */
+    }
+
+    .profile-icon-link img {
+        width: 30px; /* Smaller on medium screens */
+        height: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    /* On very small screens, consider stacking them vertically within the group */
+    .header-right-group {
+        flex-direction: column; /* Stack profile icon and logout vertically */
+        align-items: flex-end; /* Align them to the right */
+        gap: 3px; /* Minimal gap when stacked */
+        margin-left: 5px;
+    }
+
+    .logout-link {
+        font-size: 0.75rem; /* Smallest font size */
+        padding: 3px 6px; /* Smallest padding */
+    }
+
+    .welcome {
+        font-size: 1rem; /* Smallest font for welcome on very small screens */
+    }
+    .profile-icon-link img {
+        width: 25px; /* Even smaller on small screens */
+        height: 25px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+        padding: 15px; /* Reduce dashboard padding on very small screens */
+        gap: 10px; /* Reduce gap between cards */
+    }
+
+    .dashboard .card {
+        padding: 20px; /* Adjust card padding */
+    }
+}

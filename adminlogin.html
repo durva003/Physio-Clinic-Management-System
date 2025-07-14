@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Universal box-sizing for consistent layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dce0d9; /* Light green/grey background */
+            color: #595959; /* Dark grey text */
+            line-height: 1.6;
+            display: flex; /* Use flexbox for overall page layout */
+            flex-direction: column; /* Stack content vertically */
+            min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+        }
+
+        /* Header Bar (consistent theme) */
+        .header-bar {
+            background-color: #aa7dce; /* Purple/lavender */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center; /* Center the title */
+            align-items: center; /* Vertically align items */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            min-height: 60px;
+        }
+
+        .center-title {
+            flex-grow: 1; /* Allows the title to take available space */
+            text-align: center; /* Keeps the text content of the title centered */
+            min-width: 0; /* Allow flex item to shrink below its content's intrinsic size */
+            overflow: hidden; /* Hide overflow content */
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+            white-space: nowrap; /* Prevent text from wrapping */
+            padding: 0 10px; /* Add slight horizontal padding inside the title area */
+        }
+
+        .welcome { /* Reusing .welcome class for the main title */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin: 0;
+            color: white;
+        }
+
+        /* Main Content Container */
+        .container {
+            background-color: #fcfcfc; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin: 40px auto; /* Center the container */
+            width: 25%; /* BROADER: Increased for wider container */
+            flex-grow: 1; /* Allows container to take available vertical space */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally within the container */
+        }
+
+        .container h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #aa7dce; /* Consistent purple color */
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Login Form Styling */
+        .login-form {
+            width: 100%;
+            max-width: 500px; /* BROADER: Increased for wider form content */
+            padding: 0 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Space between form fields */
+        }
+
+        .form-group label {
+            display: block; /* Label on its own line */
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: #aa7dce; /* Consistent label color (purple) */
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            color: #595959;
+            background-color: #ffffff; /* White background for inputs */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            max-width: 450px; /* No change, as login forms are typically narrower */
+        }
+
+        .form-control:focus {
+            border-color: #81c3d7; /* Highlight on focus */
+            box-shadow: 0 0 5px rgba(129, 195, 215, 0.5);
+            outline: none; /* Remove default outline */
+        }
+
+        .error-message {
+            background-color: #ffe0e0;
+            color: #c00000;
+            border: 1px solid #c00000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: none; /* Hidden by default, JavaScript will show it */
+        }
+
+        /* Buttons */
+        .form-actions {
+            text-align: center; /* Center the button */
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .primary-button {
+            background-color: #81c3d7; /* Light blue */
+            color: white;
+        }
+
+        .primary-button:hover {
+            background-color: #6daac2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer (consistent theme) */
+        .footer {
+            background-color: #a6c36f;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            margin-top: auto; /* Push footer to the bottom */
+            flex-shrink: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1350px) { /* Adjust breakpoint to affect wider screens first */
+            .container {
+                max-width: 95%; /* Allow container to shrink as needed */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-bar {
+                padding: 10px 15px;
+            }
+            .welcome {
+                font-size: 1.5rem;
+            }
+            .container {
+                margin: 20px 15px;
+                padding: 20px;
+                width: 95%; /* Adjust for small screens to prevent horizontal scroll */
+                max-width: none; /* Remove max-width limit on small screens */
+            }
+            .container h2 {
+                font-size: 1.7rem;
+                margin-bottom: 20px;
+            }
+            .form-group label {
+                font-size: 0.95rem;
+            }
+            .form-control {
+                padding: 10px;
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+            .button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+            .header-bar {
+                padding: 10px;
+            }
+            .welcome {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has("error")) {
+                document.getElementById("errorMessage").innerText = "Invalid username or password.";
+                document.getElementById("errorMessage").style.display = "block"; // Make visible
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="center-title">
+            <h1 class="welcome">Admin Login</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form method="post" action="adminlogin" class="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required class="form-control">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button primary-button">Login</button>
+            </div>
+        </form>
+
+        <div class="error-message" id="errorMessage">
+            </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Your HealthCare System. All rights reserved.
+    </div>
+</body>
+</html>

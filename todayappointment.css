@@ -1,0 +1,316 @@
+/* WebContent/css/todayappointments.css */
+
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Import Google Fonts - Consistent with other pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex; /* Use flexbox for overall page layout */
+    flex-direction: column; /* Stack content vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    min-height: 60px;
+}
+
+.back-button-container {
+    flex-basis: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: #81c3d7; /* Light blue */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #6daac2;
+}
+
+.center-title {
+    flex-grow: 1;
+    text-align: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    background-color: #fcfcfc; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 40px auto; /* Center the container */
+    max-width: 1100px; /* Wider for tables */
+    flex-grow: 1; /* Allows container to take available vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally within the container */
+}
+
+.container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #aa7dce; /* Consistent purple color */
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Table Styles */
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove double borders */
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background-color: #fff;
+    border-radius: 8px; /* Rounded corners for table container */
+    overflow: hidden; /* Ensures rounded corners apply to content */
+}
+
+.appointments-table th,
+.appointments-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee; /* Light border between rows */
+}
+
+.appointments-table th {
+    background-color: #81c3d7; /* Light blue header */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.appointments-table tr:last-child td {
+    border-bottom: none; /* No border for the last row */
+}
+
+.appointments-table tbody tr:hover {
+    background-color: #f5f5f5; /* Light hover effect */
+}
+
+/* Select box styling */
+.appointments-table select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    appearance: none; /* Remove default browser styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2381c3d7' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.appointments-table select:focus {
+    outline: none;
+    border-color: #aa7dce; /* Highlight on focus */
+    box-shadow: 0 0 0 2px rgba(170, 125, 206, 0.2);
+}
+
+/* Add Prescription Link */
+.appointments-table td a {
+    color: #81c3d7;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.appointments-table td a:hover {
+    color: #6daac2;
+    text-decoration: underline;
+}
+
+/* Buttons (consistent with other pages) */
+.button-group {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%; /* Ensures button group centers within container */
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.primary-button { /* For the update status button */
+    background-color: #a6c36f; /* Greenish */
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #8fb05a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Message Styles */
+.success-message {
+    color: #28a745; /* Green */
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.error-message {
+    color: #dc3545; /* Red */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.no-appointments-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+/* Footer */
+.footer {
+    background-color: #a6c36f;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1150px) {
+    .container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+        min-height: auto;
+    }
+    .back-button-container, .center-title {
+        flex-basis: auto;
+        width: 100%;
+        text-align: center;
+        padding-left: 0;
+    }
+    .welcome {
+        font-size: 1.5rem;
+    }
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+        width: 95%;
+        max-width: none;
+    }
+    .container h2 {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+    }
+    /* Make table scrollable on small screens */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    }
+    .appointments-table {
+        min-width: 600px; /* Ensure table doesn't get too narrow */
+    }
+    .appointments-table th, .appointments-table td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    .success-message, .error-message {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome {
+        font-size: 1.2rem;
+    }
+    .container h2 {
+        font-size: 1.5rem;
+    }
+    .appointments-table select {
+        padding: 6px 8px;
+        font-size: 0.9em;
+    }
+}

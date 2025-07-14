@@ -1,0 +1,197 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar (consistent with Dashboard and BookAppointment) */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* Center the title */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+.center-title {
+    flex-grow: 1; /* Allows title to take available space for centering */
+    text-align: center;
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+    max-width: 1200px; /* Wider for tables */
+    margin: 40px auto; /* Center the container with space */
+    flex-grow: 1; /* Allows container to grow and push footer down */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #81c3d7; /* Light blue from your h2 color */
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Table Styling */
+.table-responsive {
+    overflow-x: auto; /* Allows horizontal scrolling for tables on small screens */
+    margin-bottom: 20px;
+}
+
+.prescription-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    margin-top: 20px;
+    /* --- IMPORTANT CHANGE HERE --- */
+    border: 1px solid #ccc; /* Border around the entire table */
+    /* --- END IMPORTANT CHANGE --- */
+}
+
+.prescription-table th,
+.prescription-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light separator lines for rows */
+}
+
+.prescription-table th {
+    background-color: #aa7dce; /* Purple for table headers */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.prescription-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for readability */
+}
+
+.prescription-table tbody tr:hover {
+    background-color: #f0f0f0; /* Slight hover effect */
+}
+
+/* Message Styles (consistent with BookAppointment) */
+.message {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    display: block; /* Messages should be visible if explicitly printed */
+}
+
+.error-message {
+    background-color: #ffe0e0; /* Light red */
+    color: #c00000; /* Dark red */
+    border: 1px solid #c00000;
+}
+
+.info-message { /* For "No records found" etc. */
+    background-color: #e6f7ff; /* Light blue */
+    color: #0056b3; /* Darker blue */
+    border: 1px solid #0056b3;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+
+/* Buttons (consistent with BookAppointment) */
+.form-actions {
+    display: flex;
+    justify-content: center; /* Center the back button */
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.secondary-button {
+    background-color: #f0f0f0; /* Light grey for secondary action */
+    color: #595959;
+    border: 1px solid #ccc;
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Footer (consistent with Dashboard and BookAppointment) */
+.footer {
+    background-color: #a6c36f; /* Medium green */
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto; /* Pushes footer to the bottom */
+    flex-shrink: 0; /* Prevents footer from shrinking */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .prescription-table th,
+    .prescription-table td {
+        padding: 8px 10px; /* Reduce padding for smaller screens */
+        font-size: 0.9rem;
+    }
+
+    .header-bar {
+        padding: 10px 15px;
+    }
+
+    .welcome {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .prescription-table {
+        font-size: 0.8rem;
+    }
+
+    .button {
+        width: 100%;
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <style>
+        .slot {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .selected {
+            background-color: #90ee90;
+        }
+        #errorMsg, #successMsg {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+        }
+        #errorMsg { color: red; }
+        #successMsg { color: green; }
+    </style>
+    <script>
+        let selectedButton = null;
+
+        function selectSlot(button, time) {
+            document.getElementById('appointmentTime').value = time;
+
+            if (selectedButton) {
+                selectedButton.classList.remove('selected');
+            }
+            button.classList.add('selected');
+            selectedButton = button;
+        }
+
+        function validateForm() {
+            const time = document.getElementById('appointmentTime').value;
+            if (!time) {
+                alert("Please select a time slot before booking.");
+                return false;
+            }
+            return true;
+        }
+
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("error") === "1") {
+                const msg = document.getElementById("errorMsg");
+                msg.style.display = "block";
+                setTimeout(() => msg.style.display = "none", 4000);
+            } else if (params.get("success") === "1") {
+                const msg = document.getElementById("successMsg");
+                msg.style.display = "block";
+                setTimeout(() => msg.style.display = "none", 4000);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h2>Book Appointment</h2>
+
+    <div id="errorMsg">❌ Appointment slot is full. Please choose another.</div>
+    <div id="successMsg">✅ Appointment booked successfully!</div>
+
+    <form action="BookAppointment" method="post" onsubmit="return validateForm()">
+        <label>Patient Name:</label>
+        <input type="text" readonly><br><br>
+
+        <label>Appointment Date:</label>
+        <input type="date" name="appointmentDate" required><br><br>
+
+        <label>Select Time Slot:</label><br>
+        <div>
+            <button type="button" class="slot" onclick="selectSlot(this, '10:00')">10:00 AM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '11:00')">11:00 AM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '12:00')">12:00 PM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '13:00')">1:00 PM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '18:00')">6:00 PM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '19:00')">7:00 PM</button>
+            <button type="button" class="slot" onclick="selectSlot(this, '20:00')">8:00 PM</button>
+        </div>
+        <input type="hidden" id="appointmentTime" name="appointmentTime" required><br><br>
+
+        <label>Reason for Visit:</label><br>
+        <textarea name="reason" required></textarea><br><br>
+
+        <input type="submit" value="Book Appointment">
+        <button type="button" onclick="window.location.href='PatientDashboard'">Back</button>
+    </form>
+</body>
+</html>

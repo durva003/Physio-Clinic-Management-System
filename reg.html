@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="back-button-container">
+            <a href="patientlogin.html" class="back-button">&lt; Back</a>
+        </div>
+        <div class="center-title">
+            <h1 class="welcome">Patient Registration</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Register Here</h2>
+        <form action="reg" method="post" class="registration-form">
+            <div class="form-group">
+                <label for="patientName">Full Name:</label>
+                <input type="text" id="patientName" name="patientName" required class="form-control" pattern="^[A-Za-z\s]{3,50}$" title="Enter 3-50 alphabetic characters">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required class="form-control" pattern="^[A-Za-z0-9_]{4,20}$" title="4-20 characters, only letters, numbers, and underscores allowed">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required class="form-control" pattern=".{6,}" title="Minimum 6 characters">
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required class="form-control" oninput="validatePasswordMatch()">
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required class="form-control" pattern="[0-9]{10}" title="Enter a 10-digit mobile number">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required class="form-control" pattern=".{5,100}" title="Enter at least 5 characters">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required class="form-control" max="<?= date('Y-m-d'); ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required class="form-control">
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required class="form-control" min="0" max="120" title="Enter a valid age">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required class="form-control">
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Register" class="button primary-button">
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Your HealthCare System. All rights reserved.
+    </div>
+
+    <script>
+        function validatePasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password');
+            if (confirmPassword.value !== password) {
+                confirmPassword.setCustomValidity("Passwords do not match");
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+        }
+    </script>
+</body>
+</html>

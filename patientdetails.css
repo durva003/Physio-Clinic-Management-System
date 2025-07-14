@@ -1,0 +1,254 @@
+/* WebContent/css/patientdetails.css */
+
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Import Google Fonts - Consistent with other pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex; /* Use flexbox for overall page layout */
+    flex-direction: column; /* Stack content vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    min-height: 60px;
+}
+
+.back-button-container {
+    flex-basis: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: #81c3d7; /* Light blue */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #6daac2;
+}
+
+.center-title {
+    flex-grow: 1;
+    text-align: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    background-color: #fcfcfc; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 40px auto; /* Center the container */
+    max-width: 1000px; /* Adjusted width for details */
+    flex-grow: 1; /* Allows container to take available vertical space */
+    display: flex;
+    flex-direction: column;
+}
+
+.container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #aa7dce; /* Consistent purple color */
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section {
+    background-color: #f9f9f9; /* Slightly off-white for sections */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #81c3d7; /* Light blue for section headings */
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+    padding-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.section p strong {
+    color: #aa7dce; /* Darker purple for labels */
+}
+
+.section ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin-top: 10px;
+}
+
+.section ul li {
+    background-color: #ffffff; /* White background for list items */
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.section ul ul { /* Nested list for prescriptions */
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 3px solid #81c3d7; /* A subtle border for nested items */
+}
+
+.section ul ul li {
+    background-color: #fcfdff; /* Even lighter background for sub-items */
+    border: none;
+    box-shadow: none;
+    padding: 10px;
+    font-size: 0.95rem;
+}
+
+.section a {
+    color: #81c3d7;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.section a:hover {
+    color: #6daac2;
+    text-decoration: underline;
+}
+
+.no-data-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* Error Message Style */
+.error-message {
+    background-color: #ffe0e0;
+    color: #c00000;
+    border: 1px solid #c00000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    background-color: #a6c36f;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1050px) {
+    .container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+        min-height: auto;
+    }
+    .back-button-container, .center-title {
+        flex-basis: auto;
+        width: 100%;
+        text-align: center;
+        padding-left: 0;
+    }
+    .welcome {
+        font-size: 1.5rem;
+    }
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+        width: 95%;
+        max-width: none;
+    }
+    .container h2 {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+    }
+    .section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .section h3 {
+        font-size: 1.3rem;
+        padding-bottom: 8px;
+    }
+    .section p, .section ul li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome {
+        font-size: 1.2rem;
+    }
+    .container h2 {
+        font-size: 1.5rem;
+    }
+}

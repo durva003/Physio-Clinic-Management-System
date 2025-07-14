@@ -1,0 +1,226 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar (consistent with other pages) */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* Center the title */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.center-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    /* --- IMPORTANT CHANGES HERE --- */
+    padding: 40px; /* Increased padding from 30px */
+    max-width: 1400px; /* Increased max-width from 1200px */
+    /* --- END IMPORTANT CHANGES --- */
+    margin: 40px auto;
+    flex-grow: 1;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #81c3d7; /* Light blue from your h2 color */
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Table Container for overflow */
+.table-responsive {
+    overflow-x: auto; /* Allows horizontal scrolling for tables on small screens */
+    margin-bottom: 20px;
+}
+
+/* Table Styling (Assumes the fetched HTML will contain a table with this class) */
+.reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Border around the entire table */
+}
+
+.reports-table th,
+.reports-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light separator lines for rows */
+}
+
+.reports-table th {
+    background-color: #aa7dce; /* Purple for table headers */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.reports-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for readability */
+}
+
+.reports-table tbody tr:hover {
+    background-color: #f0f0f0; /* Slight hover effect */
+}
+
+.reports-table a {
+    color: #81c3d7; /* Link color for PDF download */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.reports-table a:hover {
+    text-decoration: underline;
+}
+
+
+/* Message Styles (consistent with other pages) */
+.info-message,
+.error-message {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.error-message {
+    background-color: #ffe0e0;
+    color: #c00000;
+    border: 1px solid #c00000;
+}
+
+.info-message {
+    background-color: #e6f7ff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+
+/* Buttons (consistent with other pages) */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary-button {
+    background-color: #81c3d7;
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #6daac2;
+}
+
+.secondary-button {
+    background-color: #f0f0f0;
+    color: #595959;
+    border: 1px solid #ccc;
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Footer (consistent with other pages) */
+.footer {
+    background-color: #a6c36f;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px; /* Adjust padding for smaller screens too */
+    }
+
+    .reports-table th,
+    .reports-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .header-bar {
+        padding: 10px 15px;
+    }
+
+    .welcome {
+        font-size: 1.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+}

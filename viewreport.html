@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Uploaded Reports</title>
+        <link rel="stylesheet" href="viewreport.css"> </head>
+    <body>
+
+        <div class="header-bar">
+          <div class="center-title">
+            <h1 class="welcome">Your Uploaded Reports</h1>
+          </div>
+        </div>
+
+        <div class="container"> <h2>Your Uploaded Reports</h2>
+
+            <div id="reportContainer" class="table-container">
+                <p class="loading-message">Loading your reports...</p>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" onclick="window.location.href='report.html'" class="button secondary-button">Back to Upload</button>
+                <button type="button" onclick="window.location.href='PatientDashboard'" class="button secondary-button">Back to Dashboard</button>
+            </div>
+        </div> <div class="footer">
+            &copy; 2025 Your HealthCare System. All rights reserved.
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('GetUserReports') // Assuming 'GetUserReports' is a servlet/endpoint that returns the HTML table
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const reportContainer = document.getElementById('reportContainer');
+                        if (html.trim() === "<table><thead><tr><th>No reports found.</th></tr></thead><tbody><tr><td></td></tr></tbody></table>" || html.trim() === "") { // Example check for no data
+                             reportContainer.innerHTML = '<p class="info-message">No reports found for you.</p>';
+                        } else {
+                            reportContainer.innerHTML = html;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading reports:', error);
+                        document.getElementById('reportContainer').innerHTML = '<p class="error-message">Error loading reports. Please try again.</p>';
+                    });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,206 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dce0d9; /* Light green/grey background */
+    color: #595959; /* Dark grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height for footer to stick */
+}
+
+/* Header Bar (consistent with Dashboard and other pages) */
+.header-bar {
+    background-color: #aa7dce; /* Purple/lavender */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* Center the title */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+.center-title {
+    flex-grow: 1; /* Allows title to take available space for centering */
+    text-align: center;
+}
+
+.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    color: white;
+}
+
+/* Main Content Container */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+    max-width: 600px; /* Adjust width for form page */
+    margin: 40px auto; /* Center the container with space */
+    flex-grow: 1; /* Allows container to grow and push footer down */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #81c3d7; /* Light blue from your h2 color */
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.upload-form, .view-form {
+    margin-top: 20px;
+    padding: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #aa7dce; /* Purple for labels */
+}
+
+.form-group input[type="date"],
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea {
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #595959;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 80px; /* Minimum height for textarea */
+}
+
+/* Custom file input appearance (optional, depends on browser default) */
+.form-group input[type="file"] {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Buttons (consistent with other pages) */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 15px; /* Space between buttons */
+    margin-top: 30px;
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none; /* In case button is used for links */
+    display: inline-block; /* For proper padding and alignment */
+}
+
+.primary-button {
+    background-color: #81c3d7; /* Light blue for primary action */
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #6daac2; /* Darker blue on hover */
+}
+
+.secondary-button {
+    background-color: #f0f0f0; /* Light grey for secondary action */
+    color: #595959;
+    border: 1px solid #ccc;
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Message Styles (consistent with BookAppointment) */
+.message {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.success-message {
+    background-color: #e0ffe0; /* Light green */
+    color: #008000; /* Dark green */
+    border: 1px solid #008000;
+}
+
+/* Divider for visual separation */
+.divider {
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+}
+
+.view-reports-heading {
+    margin-top: 0; /* Adjust margin if needed */
+}
+
+/* Footer (consistent with Dashboard and other pages) */
+.footer {
+    background-color: #a6c36f; /* Medium green */
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    margin-top: auto; /* Pushes footer to the bottom */
+    flex-shrink: 0; /* Prevents footer from shrinking */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: calc(100% - 20px); /* Adjust width */
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+}
